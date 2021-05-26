@@ -1,38 +1,28 @@
-const ingredients = [
-    'Картошка',
-    'Грибы',
-    'Чеснок',
-    'Помидоры',
-    'Зелень',
-    'Приправы',
-  ];
-// Напиши скрипт, который для каждого элемента массива 
-// ingredients создаст отдельный li, 
-// после чего вставит все li за одну операцию в список ul.ingredients. 
-// Для создания DOM-узлов используй document.createElement().
+const users = [
+  { name: 'Mango', active: true },
+  { name: 'Poly', active: false },
+  { name: 'Ajax', active: true },
+  { name: 'Lux', active: false },
+];
 
-const listElementContainer = document.querySelector('#ingredients');
-console.log(listElementContainer);
+const toggleUserState = (allUsers, userName, callback) => {
+  const updatedUsers = allUsers.map(user =>
+    user.name === userName ? { ...user, active: !user.active } : user,
+  );
 
-// const elements =[];
-// for (let i=0; i<ingredients.length; i+=1) {
-//   const ingredient = ingredients[i];
-//   const liEl = document.createElement('li');
-//   liEl.textContent = ingredients[i];
-//   elements.push(liEl);
-// }
+  callback(updatedUsers);
+};
 
-// console.log(elements);
-// listElementContainer.append(...elements);
+const logger = updatedUsers => console.table(updatedUsers);
 
+/*
+ * Сейчас работает так
+ */
+toggleUserState(users, 'Mango', logger);
+toggleUserState(users, 'Lux', logger);
 
-const makeListElementContainer = ingredients => {
-    return ingredients.map(ingredient => {
-      const liEl = document.createElement('li');
-      liEl.textContent = ingredient;
-      return liEl;
-    });
-  };
-
-const elements = makeListElementContainer(ingredients);
-listElementContainer.append(...elements);
+/*
+ * Должно работать так
+ */
+toggleUserState(users, 'Mango').then(logger);
+toggleUserState(users, 'Lux').then(logger);
