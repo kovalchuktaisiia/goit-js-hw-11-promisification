@@ -1,18 +1,13 @@
 
-// получаю доступ к <ul "categories">
-const navEl = document.querySelector('ul');
-//console.log(navEl);
+//Напиши функцию delay(ms), которая возвращает промис, переходящий в состояние "resolved" через ms миллисекунд. Значением исполнившегося промиса должно быть то кол-во миллисекунд которое передали во время вызова функции delay.
 
-const categElements = navEl.querySelectorAll('.item');
-//console.log(CategElements);
-console.log(`В списке ${categElements.length} категори`);
+const delay = ms => {
+  // Твой код
+};
 
-const categElement = document.querySelector('li.item');
-//console.log(`Категория: ${categElement.firstElementChild.textContent}`);
+const logger = time => console.log(`Resolved after ${time}ms`);
 
-const categElementList = categElement.lastElementChild;
-//console.log(`Количество элементов: ${categElementList.children.length}`);
-
- categElements.forEach ((categElement) => 
- console.log(`Категория: ${categElement.firstElementChild.textContent}, 
-Количество элементов: ${categElement.lastElementChild.children.length}`));
+// Вызовы функции для проверки
+delay(2000).then(logger); // Resolved after 2000ms
+delay(1000).then(logger); // Resolved after 1000ms
+delay(1500).then(logger); // Resolved after 1500ms
