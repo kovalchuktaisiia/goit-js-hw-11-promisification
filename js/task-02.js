@@ -13,6 +13,9 @@ const users = [
 //   callback(updatedUsers);
 // };
 
+// const logger = updatedUsers => console.table(updatedUsers);
+
+
 const toggleUserState = (allUsers, userName) => {
   return new Promise(resolve => {
    setTimeout(() => {
@@ -23,20 +26,11 @@ const toggleUserState = (allUsers, userName) => {
   });
 };
 
-toggleUserState().then(logger);
+//toggleUserState.then(logger);
 
 function logger(result) {  
   console.table(result);
-}
+};
 
-/*
- * Сейчас работает так
- */
-// toggleUserState(users, 'Mango', logger);
-// toggleUserState(users, 'Lux', logger);
-
-/*
- * Должно работать так
- */
-// toggleUserState(users, 'Mango').then(logger);
-// toggleUserState(users, 'Lux').then(logger);
+toggleUserState(users, 'Mango').then(logger);
+toggleUserState(users, 'Lux').then(logger);
