@@ -18,19 +18,19 @@ const users = [
 
 const toggleUserState = (allUsers, userName) => {
   return new Promise(resolve => {
-   setTimeout(() => {
-    allUsers.map(user =>
+   
+    const updatedUsers = allUsers.map(user =>
       user.name === userName ? { ...user, active: !user.active } : user,
     );
-   }, 1000);
+
+   resolve(updatedUsers);
   });
 };
 
+const logger = updatedUsers => console.table(updatedUsers);
 //toggleUserState.then(logger);
 
-function logger(result) {  
-  console.table(result);
-};
+
 
 toggleUserState(users, 'Mango').then(logger);
 toggleUserState(users, 'Lux').then(logger);
